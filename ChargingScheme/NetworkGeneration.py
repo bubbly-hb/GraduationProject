@@ -2,7 +2,7 @@ import itertools
 import random
 import numpy as np
 import math
-import Constants
+from Constants import Constants
 from random import uniform
 
 

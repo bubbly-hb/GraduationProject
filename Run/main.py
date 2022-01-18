@@ -1,11 +1,11 @@
 import sys
 import time
-
-sys.path.append("e:\\python\\GraduationProject")
-sys.path.append("e:\\python\\GraduationProject\\DataVisualization")
+import os
+sys.path.append(os.getcwd())
+sys.path.append(os.getcwd() + "\\DataVisualization")
 import DataVisualization.DataStore as DataStore
 import DataVisualization.Visualization as Visualization
-import ChargingScheme.Constants as Constants
+from ChargingScheme.Constants import Constants
 import ChargingScheme.SchemeComparative as REEC
 import ChargingScheme.SchemeProposed as REBE
 
@@ -39,5 +39,22 @@ def NChange():
     Visualization.X_N_Y_eff(N_ls, eff_ls_reec, eff_ls_rebe, currentTime)
 
 
+def NDSimu():
+    nd_x = [1, 30, 50, 70]
+
+    desc = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + \
+                                "NDsimu"
+    
+    map_dic, nodeR_dic = DataStore.simu(desc)
+
+    energy, eff, nd_reec = REEC.chargeByREEC(Constants.NUM_OF_NODES, map_dic, nodeR_dic)
+    
+    energy, eff, nd_rebe = REBE.chargeByREBE(Constants.NUM_OF_NODES, map_dic, nodeR_dic)
+
+    Visualization.X_ndratio_Y_time(nd_x, nd_reec, nd_rebe, desc)
+    
+
+
 if __name__ == '__main__':
-    NChange()
+    # NChange()
+    NDSimu()
