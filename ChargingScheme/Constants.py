@@ -1,11 +1,11 @@
 class Constants:
     INF = 99999999
     NUM_OF_NETWORKS = 30  # 网络个数
-    NUM_OF_NODES = 100  # 单个网络节点数
+    NUM_OF_NODES = 150  # 单个网络节点数
     MAX_COMMUNICATE_RANGE = 20  # 最大信息传输距离 m
     MAX_INFO_GENERATE_RATE = 2000  # 节点最大信息生成速率 bps
     MIN_INFO_GENERATE_RATE = 1200  # 节点最小信息生成速率 bps
-    NODE_FULL_ENERGY = 10000000  # mJ, 即20kJ, which is the maximum capacity of the battery of each sensor node
+    NODE_FULL_ENERGY = 2000000  # mJ, 即20kJ, which is the maximum capacity of the battery of each sensor node
     MC_FULL_ENERGY = 50000000  # mJ, 即50kJ, which is the maximum capacity of the battery of MC
     MC_MAX_MOVE_DISTANCE = 300  # m, 单轮充电中MC最大移动距离
     ROUND = 1000  # 对网络的充电轮数
@@ -26,7 +26,7 @@ class Constants:
     EIS = 0.3  # mj/bit, energy consumed by node i to transmit one bit data
     EIG = 0.002  # mj/bit, energy consumed by node i to generate one bit data
 
-    STANDARDLIST = [1000, 10000, 30000, 70000]
+    STANDARDLIST = [10000, 50000, 70000, 90000]
 
 
     def getDic():
