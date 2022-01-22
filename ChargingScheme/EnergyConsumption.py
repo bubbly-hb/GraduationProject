@@ -1,4 +1,4 @@
-import Constants
+from Constants import Constants
 
 
 # nodesNum：网络节点数量

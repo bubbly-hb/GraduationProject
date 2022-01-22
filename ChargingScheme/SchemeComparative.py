@@ -1,6 +1,6 @@
 import numpy as np
 
-import Constants
+from Constants import Constants
 import NetworkGeneration
 import NetworkTopuBuild
 import EnergyConsumption
@@ -37,6 +37,7 @@ def chargeByREEC(nodesNum, mapDic, nodeInfoGenerationRateDic):
     Rrate = []
     ChargeEfficiency = []
     acdistance = []
+    target_nd = [0.0, 0.0, 0.0, 0.0]
     for pos_round in range(Constants.NUM_OF_NETWORKS):
         mcChargingPath = [0]  # MCS充电路径，path[0]为BS，path[1]为第一个待充电的锚点
         topuCostMatrix = np.ones((nodesNum + 1, nodesNum + 1))  # 构造网络拓扑结构时每条通信边的传输代价矩阵
@@ -224,6 +225,13 @@ def chargeByREEC(nodesNum, mapDic, nodeInfoGenerationRateDic):
                                 (ACTDistance * Constants.MCEV + supplementEnergy))
         acdistance.append(ACTDistance)
 
+        CommonHelper.fillNDList(nodeDeadTimeList, Constants.STANDARDLIST)
+        for i in range(len(target_nd)):
+            target_nd[i] += nodeDeadTimeList[i]
+
+    for i in range(len(target_nd)):
+        target_nd[i] /= Constants.NUM_OF_NETWORKS
+
     target_E = 0
     target_R = 0
     target_ME = 0
@@ -244,7 +252,7 @@ def chargeByREEC(nodesNum, mapDic, nodeInfoGenerationRateDic):
     print('acdistance: ', target_acdistance / Constants.NUM_OF_NETWORKS)
 
     # todo
-    return target_E / Constants.NUM_OF_NETWORKS, target_ME / Constants.NUM_OF_NETWORKS
+    return target_E / Constants.NUM_OF_NETWORKS, target_ME / Constants.NUM_OF_NETWORKS, target_nd
 
 
 def test():

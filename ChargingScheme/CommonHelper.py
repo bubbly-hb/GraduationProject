@@ -1,4 +1,4 @@
-import Constants
+from Constants import Constants
 import NetworkGeneration
 
 
@@ -106,6 +106,14 @@ def test_chooseAnchorAndChargePath():
     print(disMatrix)
     print("充电路径")
     print(path)
+
+
+def fillNDList(nodeDeadTimeList, standardList):
+    for i in range(len(nodeDeadTimeList), len(standardList)):
+        nodeDeadTimeList.append(0)
+    for i in range(len(standardList)):
+        if nodeDeadTimeList[i] == 0:
+            nodeDeadTimeList[i] = standardList[i]
 
 
 def test():
