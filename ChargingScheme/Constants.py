@@ -28,7 +28,6 @@ class Constants:
 
     STANDARDLIST = [10000, 50000, 70000, 90000]
 
-
     def getDic():
         dic = {}
         dic["INF"] = Constants.INF

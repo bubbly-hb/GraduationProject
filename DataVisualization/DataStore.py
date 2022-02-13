@@ -19,9 +19,10 @@ if not os.path.isdir(PWD):
 def writeConstants(targetpwd):
     dic = Constants.getDic()
     js = json.dumps(dic)
-    
+
     with open(targetpwd + "_Constants", "w") as f:
         f.write(js)
+
 
 # get Constans info
 def setConstants(targetpwd):
@@ -30,8 +31,10 @@ def setConstants(targetpwd):
         dic = json.loads(js)
     Constants.setByDic(dic)
 
+
 def createNewFile(desc):
     os.mkdir(PWD + desc + "\\")
+
 
 # 即时生成数据进行仿真
 def simu(desc):
@@ -39,20 +42,23 @@ def simu(desc):
     targetpwd = PWD + desc + "\\"
     writeConstants(targetpwd)
 
-    map_dic = initMapDic(Constants.NUM_OF_NETWORKS, Constants.NUM_OF_NODES, Constants.MAX_COMMUNICATE_RANGE)
+    map_dic = initMapDic(Constants.NUM_OF_NETWORKS, Constants.NUM_OF_NODES,
+                         Constants.MAX_COMMUNICATE_RANGE)
     js = json.dumps(map_dic)
-    
+
     with open(targetpwd + "_MAP", "w") as f:
         f.write(js)
-    
-    nodeR_dic = initNodeInformationGenerationRateDic(Constants.NUM_OF_NETWORKS, Constants.NUM_OF_NODES,
-                                                        Constants.MIN_INFO_GENERATE_RATE,
-                                                        Constants.MAX_INFO_GENERATE_RATE)
+
+    nodeR_dic = initNodeInformationGenerationRateDic(Constants.NUM_OF_NETWORKS,
+                                                     Constants.NUM_OF_NODES,
+                                                     Constants.MIN_INFO_GENERATE_RATE,
+                                                     Constants.MAX_INFO_GENERATE_RATE)
     js = json.dumps(nodeR_dic)
     with open(targetpwd + "_INFO", "w") as f:
         f.write(js)
-        
+
     return map_dic, nodeR_dic
+
 
 # 重现仿真
 # desc:对数据的描述，包含时间信息和概述字符串
@@ -63,7 +69,7 @@ def resimu(filename):
     with open(targetpwd + "_MAP", "r") as f:
         js = f.read()
         map_dic = json.loads(js)
-   
+
     with open(targetpwd + "_INFO", "r") as f:
         js = f.read()
         nodeR_dic = json.loads(js)

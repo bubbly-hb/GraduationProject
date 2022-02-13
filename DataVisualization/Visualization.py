@@ -70,6 +70,7 @@ def X_B_Y_eff(x, y_other, y_our, desc):
     plt.savefig(PWD + desc + "\\" + "X_B_Y_eff", bbox_inches='tight')
     plt.show()
 
+
 def X_ndratio_Y_time(x, y_other, y_our, desc):
     plt.xlabel('node dead ratio (%)')
     plt.ylabel('time')
@@ -79,6 +80,7 @@ def X_ndratio_Y_time(x, y_other, y_our, desc):
     plt.legend()
     plt.savefig(PWD + desc + "\\" + "X_ndratio_Y_time", bbox_inches='tight')
     plt.show()
+
 
 # 对于特定的nd ratio,不同网络大小下对应的出现时间
 # 这里的savefig路径有变化，因为在main里已经改变了这个文件的PWD值
@@ -91,7 +93,6 @@ def X_N_Y_time(x, y_other, y_our, desc):
     plt.legend()
     plt.savefig(PWD + desc + "X_N_Y_time", bbox_inches='tight')
     plt.show()
-
 
 
 def test():
