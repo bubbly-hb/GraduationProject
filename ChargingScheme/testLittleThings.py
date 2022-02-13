@@ -1,14 +1,7 @@
-
-from Constants import Constants
-import os
-import sys
-
-
 # def testClearList(ls):
 #     del ls[:]
 #     ls.append(1)
 #     Constants.NUM_OF_NODES = 0
-
 
 # ls = [1, 2]
 # print(ls)
@@ -20,10 +13,13 @@ import sys
 # for i in ls:
 #     print(i)
 
+
 class hhhh:
     a = 5
+
     def seta(aa):
         hhhh.a = aa
+
 
 print(hhhh.a)
 hhhh.seta(10)

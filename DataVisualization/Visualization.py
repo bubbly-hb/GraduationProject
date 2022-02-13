@@ -94,6 +94,7 @@ def X_N_Y_time(x, y_other, y_our, desc):
     plt.savefig(PWD + desc + "X_N_Y_time", bbox_inches='tight')
     plt.show()
 
+
 # 对于特定的nd ratio,不同L(可对应MC最大携能或者EFF)下对应的出现时间
 # 这里的savefig路径有变化，因为在main里已经改变了这个文件的PWD值
 def X_L_Y_time(x, y_other, y_our, desc):
